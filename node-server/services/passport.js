@@ -18,14 +18,15 @@ const localLogin = new LocalStrategy(
     // 2. call done with user if its the correct user
     // 3. if not then call the done with nothing
     try {
-      const user = await User.findOne({ email });
-      if (user) {
-        user.comparePasswords(password, (err, isMatch) => {
+      const user$ = await User.findOne({ email });
+      if (user$) {
+        user$.comparePasswords(password, (err, isMatch) => {
           if (err) return done(err, false);
           if (!isMatch) return done(null, false);
-          return done(null, user);
+          return done(null, user$);
         });
       } else {
+        done(null, false);
       }
     } catch (err) {
       done(err);
@@ -46,11 +47,8 @@ const jwtLogin = new JwtStrategy(jwtOptions, async (payload, done) => {
   // 3. otherwise call `done` without the user object
   try {
     const user = await User.findOne({ _id: payload.sub });
-    if (user) {
-      done(null, user);
-    } else {
-      done(null, false);
-    }
+    if (user) done(null, user);
+    else done(null, false);
   } catch (err) {
     return done(err, false);
   }

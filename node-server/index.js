@@ -4,7 +4,6 @@ const morgan = require("morgan");
 const logger = require("./helpers/logger");
 const router = require("./router");
 const app = express();
-const port = process.env.PORT || 8080;
 const mongoose = require("mongoose");
 
 // ensure index warning
@@ -20,6 +19,7 @@ app.use(bodyParser.json({ type: "*/*" }));
 app.use("/api/user", router);
 
 // starting the application server.
+const port = process.env.PORT || 8080;
 app.listen(port, error => {
   if (error) {
     logger("Error in starting server...");

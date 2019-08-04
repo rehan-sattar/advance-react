@@ -20,6 +20,14 @@ UserSchema.pre("save", function(next) {
 });
 
 UserSchema.methods.comparePasswords = function(candidatePassword, callback) {
+  /**
+   * @compare use to compare two passwords.
+   * @params
+   *  ->  @candidatePassword -> plane password, compare with hash it.
+   *  ->  @hashedPassword -> Users encrypted password, read from database.
+   * @return @method callback(@param err, @param matchedFlag);
+   */
+
   bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
     if (err) return callback(err, false);
     if (isMatch) return callback(null, isMatch);
