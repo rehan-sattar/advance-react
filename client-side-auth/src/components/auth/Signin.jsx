@@ -8,8 +8,8 @@ class Signup extends Component {
   componentWillMount() {}
 
   onSubmit = (formValues) => {
-    const { signup, history } = this.props;
-    signup(formValues, () => {
+    const { signin, history } = this.props;
+    signin(formValues, () => {
       history.push('/features');
     });
   };
@@ -34,7 +34,7 @@ class Signup extends Component {
             />
           </fieldset>
           <div>{errorMessage}</div>
-          <button type="submit"> Submit</button>
+          <button type="submit"> Signin</button>
         </form>
       </div>
     );
