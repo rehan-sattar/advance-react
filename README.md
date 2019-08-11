@@ -1,4 +1,4 @@
-## Advance React Course Code
+## Advance React Code Samples
 
 ### Includes
 
