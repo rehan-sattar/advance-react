@@ -13,7 +13,7 @@
 
 ---
 
-> 📢 NOTE: All the code samples are using the classes and functional component pattern, soon all of them will be refacored in hooks and functional patterns.
+> 📢 NOTE: All the code samples are using the classes and functional component pattern, soon all of them will be refactored in hooks and functional patterns.
 
 ## What's next? 🔥
 
