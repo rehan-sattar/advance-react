@@ -5,9 +5,9 @@ const Authentication = require('./controllers/authentication');
 require('./services/passport');
 
 const requireAuth = passport.authenticate('jwt', { session: false });
-const requireSignin = passport.authenticate('local', { session: false });
+const requireSignIn = passport.authenticate('local', { session: false });
 
-router.post('/signup', Authentication.signup);
-router.post('/signin', requireSignin, Authentication.signin);
+router.post('/signup', Authentication.signUp);
+router.post('/signin', requireSignIn, Authentication.signIn);
 
 module.exports = router;

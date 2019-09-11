@@ -11,7 +11,7 @@ mongoose.set('useCreateIndex', true);
 //  Database connection
 require('./db');
 
-// middlewares
+// middleware
 app.use(morgan('combined'));
 app.use(cors());
 app.use(bodyParser.json({ type: '*/*' }));
@@ -26,5 +26,5 @@ app.listen(port, error => {
     logger('Error in starting server...');
     return;
   }
-  logger('Server starteed on port 8080.');
+  logger('Server started on port 8080.');
 });

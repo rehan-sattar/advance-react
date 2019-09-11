@@ -1,13 +1,13 @@
-const mongoose = require("mongoose");
-const bcrypt = require("bcryptjs");
+const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
 
 const UserSchema = new mongoose.Schema({
   email: { type: String, unique: true, lowercase: true },
   password: String
 });
 
-// save hook enccryption for password
-UserSchema.pre("save", function(next) {
+// save hook encryption for password
+UserSchema.pre('save', function(next) {
   const user = this;
   bcrypt.genSalt(10, function(err, salt) {
     if (err) return next(err);
@@ -35,5 +35,5 @@ UserSchema.methods.comparePasswords = function(candidatePassword, callback) {
   });
 };
 
-const ModelClass = mongoose.model("user", UserSchema);
+const ModelClass = mongoose.model('user', UserSchema);
 module.exports = ModelClass;
